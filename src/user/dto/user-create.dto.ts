@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString, IsStrongPassword } from "class-validator";
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, IsStrongPassword } from "class-validator";
 import {UserRole} from "../shemas/user.shema";
 
 export class UserCreateDto {
@@ -10,8 +10,9 @@ export class UserCreateDto {
     @IsNotEmpty()
     readonly email: string;
 
-    @IsStrongPassword()
     readonly password: string;
 
+    @IsOptional()
+    @IsEnum(UserRole)
     readonly role: UserRole;
 }

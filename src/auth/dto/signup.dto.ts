@@ -1,4 +1,5 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+import { UserRole } from "src/user/shemas/user.shema";
 
 export class SignUpDto {
     @IsOptional()
@@ -13,4 +14,8 @@ export class SignUpDto {
     @IsString()
     @MinLength(7)
     readonly password: string;
+
+    @IsOptional()
+    @IsEnum(UserRole)
+    readonly role: UserRole;
 }
